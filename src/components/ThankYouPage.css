@@ -1,0 +1,45 @@
+/* src/components/ThankYouPage.css */
+
+.thank-you-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text color */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in the element’s total width and height */
+  }
+  
+  .thank-you-page h1 {
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif; /* Font style for the heading */
+    font-size: 36px; /* Font size for the heading */
+    text-align: center; /* Center text */
+  }
+  
+  .thank-you-page p {
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif; /* Font style for the paragraph */
+    font-size: 18px; /* Font size for the paragraph */
+    text-align: center; /* Center text */
+  }
+  
+  .thank-you-page .btn.close-btn {
+    background-color: #f9c805; /* Button background color */
+    color: #000; /* Button text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif; /* Font style for the button */
+    font-size: 16px; /* Font size for the button */
+    transition: background-color 0.3s ease;
+  }
+  
+  .thank-you-page .btn.close-btn:hover {
+    background-color: #f7b809; /* Button background color on hover */
+  }
+  
