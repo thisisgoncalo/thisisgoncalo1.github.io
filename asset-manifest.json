@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/thisisgoncalo1.github.io/static/css/main.ed0dde20.css",
+    "main.js": "/thisisgoncalo1.github.io/static/js/main.c4a507d9.js",
+    "static/js/453.f6dec0e7.chunk.js": "/thisisgoncalo1.github.io/static/js/453.f6dec0e7.chunk.js",
+    "index.html": "/thisisgoncalo1.github.io/index.html",
+    "main.ed0dde20.css.map": "/thisisgoncalo1.github.io/static/css/main.ed0dde20.css.map",
+    "main.c4a507d9.js.map": "/thisisgoncalo1.github.io/static/js/main.c4a507d9.js.map",
+    "453.f6dec0e7.chunk.js.map": "/thisisgoncalo1.github.io/static/js/453.f6dec0e7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ed0dde20.css",
+    "static/js/main.c4a507d9.js"
+  ]
+}
