@@ -85,7 +85,7 @@ const JoinForm = () => {
             ) : (
                 <div className="join-form">
                     <button className="close-btn" onClick={handleClose}>×</button>  {/* Close button */}
-                    <h1 className="glitch">JOIN THE NEWSLETTER</h1>
+                    <h1 className="glitch">JOIN GONÇALO CLUB</h1>
                     <form onSubmit={handleJoin}>
                         <div className="input-container">
                             <input
