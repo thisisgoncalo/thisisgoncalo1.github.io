@@ -37,9 +37,14 @@ const HomePage = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.error('Error trying to play video:', error);
-      });
+      const playVideo = async () => {
+        try {
+          await videoRef.current.play();
+        } catch (error) {
+          console.error('Error trying to play video:', error);
+        }
+      };
+      playVideo();
     }
   }, [videoSource]);
 
