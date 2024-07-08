@@ -35,6 +35,14 @@ const HomePage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.error('Error trying to play video:', error);
+      });
+    }
+  }, [videoSource]);
+
   const handleMuteToggle = () => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted;
