@@ -1,3 +1,4 @@
+// HomePage.js
 import React, { useState, useEffect, useRef } from 'react';
 import { FaInstagram, FaTiktok, FaFacebookF, FaYoutube, FaSoundcloud, FaSpotify, FaApple, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -76,7 +77,7 @@ const HomePage = () => {
 
       <nav className="navbar">
         <div className="navbar-buttons">
-        <button className="btn join-btn" onClick={() => navigate('/joingoncaloclub')}>JOIN</button>
+          <button className="btn join-btn" onClick={() => navigate('/joingoncaloclub')}>JOIN</button>
           <a href="https://linktr.ee/drinkwatergivelove_" target="_blank" rel="noopener noreferrer">
             <button className="btn listen-btn">LISTEN</button>
           </a>
