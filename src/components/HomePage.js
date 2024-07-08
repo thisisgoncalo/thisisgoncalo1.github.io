@@ -76,7 +76,7 @@ const HomePage = () => {
 
       <nav className="navbar">
         <div className="navbar-buttons">
-          <button className="btn join-btn" onClick={() => navigate('/join-form')}>JOIN</button>
+        <button className="btn join-btn" onClick={() => navigate('/joingoncaloclub')}>JOIN</button>
           <a href="https://linktr.ee/drinkwatergivelove_" target="_blank" rel="noopener noreferrer">
             <button className="btn listen-btn">LISTEN</button>
           </a>
