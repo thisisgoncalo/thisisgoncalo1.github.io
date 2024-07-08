@@ -7,7 +7,7 @@ import ThankYouPage from './components/ThankYouPage';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/thisisgoncalo1">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/joingoncaloclub" element={<JoinForm />} />
