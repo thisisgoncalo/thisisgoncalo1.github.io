@@ -49,26 +49,6 @@ const HomePage = () => {
     }
   }, [videoSource]);
 
-  useEffect(() => {
-    const handleVolumeChange = () => {
-      if (videoRef.current && videoRef.current.volume > 0 && isMuted) {
-        videoRef.current.muted = false;
-        setIsMuted(false);
-      }
-    };
-
-    const videoElement = videoRef.current;
-    if (videoElement) {
-      videoElement.addEventListener('volumechange', handleVolumeChange);
-    }
-
-    return () => {
-      if (videoElement) {
-        videoElement.removeEventListener('volumechange', handleVolumeChange);
-      }
-    };
-  }, [isMuted]);
-
   const handleMuteToggle = () => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted;
