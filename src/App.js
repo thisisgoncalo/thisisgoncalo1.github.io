@@ -8,7 +8,7 @@ import ThankYouPage from './components/ThankYouPage';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}> {/* Added basename prop */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/join-form" element={<JoinForm />} />
