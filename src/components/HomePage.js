@@ -51,27 +51,23 @@ const HomePage = () => {
 
   useEffect(() => {
     const handleVolumeChange = () => {
-      if (videoRef.current) {
-        if (videoRef.current.volume > 0) {
-          videoRef.current.muted = false;
-          setIsMuted(false);
-        } else {
-          videoRef.current.muted = true;
-          setIsMuted(true);
-        }
+      if (videoRef.current && videoRef.current.volume > 0 && isMuted) {
+        videoRef.current.muted = false;
+        setIsMuted(false);
       }
     };
 
-    if (videoRef.current) {
-      videoRef.current.addEventListener('volumechange', handleVolumeChange);
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      videoElement.addEventListener('volumechange', handleVolumeChange);
     }
 
     return () => {
-      if (videoRef.current) {
-        videoRef.current.removeEventListener('volumechange', handleVolumeChange);
+      if (videoElement) {
+        videoElement.removeEventListener('volumechange', handleVolumeChange);
       }
     };
-  }, []);
+  }, [isMuted]);
 
   const handleMuteToggle = () => {
     if (videoRef.current) {
