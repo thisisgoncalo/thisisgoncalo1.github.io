@@ -27,7 +27,7 @@ const HomePage = () => {
 
     const timer = setTimeout(() => {
       setShowPresave(true);
-    }, 3000);
+    }, 4000);
 
     return () => {
       clearTimeout(timer);
