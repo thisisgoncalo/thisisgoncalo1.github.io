@@ -49,6 +49,30 @@ const HomePage = () => {
     }
   }, [videoSource]);
 
+  useEffect(() => {
+    const handleVolumeChange = () => {
+      if (videoRef.current) {
+        if (videoRef.current.volume > 0) {
+          videoRef.current.muted = false;
+          setIsMuted(false);
+        } else {
+          videoRef.current.muted = true;
+          setIsMuted(true);
+        }
+      }
+    };
+
+    if (videoRef.current) {
+      videoRef.current.addEventListener('volumechange', handleVolumeChange);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.removeEventListener('volumechange', handleVolumeChange);
+      }
+    };
+  }, []);
+
   const handleMuteToggle = () => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted;
