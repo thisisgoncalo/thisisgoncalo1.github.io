@@ -49,11 +49,14 @@ const HomePage = () => {
     }
   }, [videoSource]);
 
-  const handleMuteToggle = () => {
+  useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(videoRef.current.muted);
+      videoRef.current.muted = isMuted;
     }
+  }, [isMuted]);
+
+  const handleMuteToggle = () => {
+    setIsMuted(prevIsMuted => !prevIsMuted);
   };
 
   return (
