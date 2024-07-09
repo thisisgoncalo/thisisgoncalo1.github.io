@@ -152,7 +152,7 @@
 }
 
 /* Add styles for screen widths below 1200px to position social icons vertically on the left side */
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   .social-icons {
     top: 50%; /* Vertically center the icons */
     bottom: auto; /* Reset bottom position */
