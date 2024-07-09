@@ -30,7 +30,7 @@
 }
 
 /* Center the buttons for mobile screens */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .navbar {
     top: 18px; /* Adjusted top position to align with mute button */
     right: auto; /* Center buttons horizontally */
@@ -62,7 +62,7 @@
 }
 
 /* Add styles for desktop to position the mute button at the bottom right */
-@media (min-width: 769px) {
+@media (min-width: 800px) {
   .mute-btn {
     position: absolute;
     bottom: 50px; /* Position the button at the bottom of the screen */
@@ -127,7 +127,7 @@
 }
 
 /* Move social icons up for mobile screens */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .social-icons {
     bottom: 90px; /* Move social icons up for mobile */
     gap: 18px; /* Reduce the gap for mobile */
@@ -135,7 +135,7 @@
 }
 
 /* Spread out social icons on larger screens */
-@media (min-width: 768px) {
+@media (min-width:800px) {
   .social-icons {
     gap: 30px; /* Increase the gap for larger screens */
   }

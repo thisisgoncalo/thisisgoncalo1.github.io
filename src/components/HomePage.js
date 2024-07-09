@@ -15,7 +15,7 @@ const HomePage = () => {
     document.body.style.overflow = 'hidden';
 
     const handleResize = () => {
-      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      const isMobile = window.matchMedia("(max-width: 800px)").matches;
       const newVideoSource = isMobile
         ? `${process.env.PUBLIC_URL}/backgroundfinal_mobile.mp4`
         : `${process.env.PUBLIC_URL}/websitetesteporfavor.mp4`;
