@@ -40,9 +40,22 @@ const HomePage = () => {
     if (videoRef.current) {
       const playVideo = async () => {
         try {
-          await videoRef.current.play();
+          const playPromise = videoRef.current.play();
+          if (playPromise !== undefined) {
+            await playPromise;
+          }
         } catch (error) {
           console.error('Error trying to play video:', error);
+          // Add a user gesture to start video playback
+          const handleUserGesture = () => {
+            videoRef.current.play().catch((err) => {
+              console.error('Playback failed:', err);
+            });
+            document.removeEventListener('click', handleUserGesture);
+            document.removeEventListener('touchstart', handleUserGesture);
+          };
+          document.addEventListener('click', handleUserGesture);
+          document.addEventListener('touchstart', handleUserGesture);
         }
       };
       playVideo();

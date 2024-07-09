@@ -135,9 +135,19 @@
 }
 
 /* Spread out social icons on larger screens */
-@media (min-width:800px) {
+@media (min-width: 800px) {
   .social-icons {
     gap: 30px; /* Increase the gap for larger screens */
+  }
+}
+
+@media (max-height: 460px) {
+  .social-icons {
+    top: 20px;
+    left: 20px;
+    transform: none; /* Reset the transformation */
+    flex-direction: column; /* Stack icons vertically */
+    gap: 20px;
   }
 }
 
