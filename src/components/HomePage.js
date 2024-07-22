@@ -93,7 +93,9 @@ const HomePage = () => {
 
       <nav className="navbar">
         <div className="navbar-buttons">
-          <button className="btn join-btn" onClick={() => navigate('/joingoncaloclub')}>JOIN</button>
+        <a href="https://linktr.ee/joingoncaloclub" target="_blank" rel="noopener noreferrer">
+            <button className="btn listen-btn">JOIN</button>
+          </a>
           <a href="https://linktr.ee/drinkwatergivelove_" target="_blank" rel="noopener noreferrer">
             <button className="btn listen-btn">LISTEN</button>
           </a>
