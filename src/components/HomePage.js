@@ -87,15 +87,12 @@ const HomePage = () => {
         Your browser does not support the video tag.
       </video>
 
-      <a className={`btn presave-btn ${showPresave ? 'show' : ''}`} href="https://lnkfi.re/loudandclear" target="_blank" rel="noopener noreferrer">
+      <a className={`btn presave-btn ${showPresave ? 'show' : ''}`} href="https://lnkfi.re/loudandclearremix" target="_blank" rel="noopener noreferrer">
         LISTEN NOW
       </a>
 
       <nav className="navbar">
         <div className="navbar-buttons">
-        <a href="https://linktr.ee/thisisgoncalo" target="_blank" rel="noopener noreferrer">
-            <button className="btn listen-btn">JOIN</button>
-          </a>
           <a href="https://linktr.ee/drinkwatergivelove_" target="_blank" rel="noopener noreferrer">
             <button className="btn listen-btn">LISTEN</button>
           </a>
