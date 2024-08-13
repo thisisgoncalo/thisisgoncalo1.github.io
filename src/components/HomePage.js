@@ -88,7 +88,7 @@ const HomePage = () => {
       </video>
 
       <a className={`btn presave-btn ${showPresave ? 'show' : ''}`} href="https://lnkfi.re/loudandclearremix" target="_blank" rel="noopener noreferrer">
-        LISTEN NOW
+        'LOUD AND CLEAR' REMIX OUT NOW
       </a>
 
       <nav className="navbar">
