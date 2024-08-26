@@ -1,15 +1,15 @@
 // HomePage.js
 import React, { useState, useEffect, useRef } from 'react';
-import { FaInstagram, FaTiktok, FaFacebookF, FaYoutube, FaSoundcloud, FaSpotify, FaApple, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { FaInstagram, FaTiktok, FaFacebookF, FaYoutube, FaSoundcloud, FaSpotify, FaApple } from 'react-icons/fa';
+
 import './HomePage.css';
 
 const HomePage = () => {
   const [showPresave, setShowPresave] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [showYesButton, setShowYesButton] = useState(false); // State for showing the YES button
   const [videoSource, setVideoSource] = useState('');
   const videoRef = useRef(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -17,7 +17,7 @@ const HomePage = () => {
     const handleResize = () => {
       const isMobile = window.matchMedia("(max-width: 1280px)").matches;
       const newVideoSource = isMobile
-        ? `${process.env.PUBLIC_URL}/backgroundfinal_mobile.mp4`
+        ? `${process.env.PUBLIC_URL}/websitetesteporfavor.mp4`
         : `${process.env.PUBLIC_URL}/websitetesteporfavor.mp4`;
       setVideoSource(newVideoSource);
     };
@@ -36,59 +36,61 @@ const HomePage = () => {
     };
   }, []);
 
-  useEffect(() => {
+  const handleStartVideo = () => {
     if (videoRef.current) {
-      const playVideo = async () => {
-        try {
-          const playPromise = videoRef.current.play();
-          if (playPromise !== undefined) {
-            await playPromise;
-          }
-        } catch (error) {
-          console.error('Error trying to play video:', error);
-          // Add a user gesture to start video playback
-          const handleUserGesture = () => {
-            videoRef.current.play().catch((err) => {
-              console.error('Playback failed:', err);
-            });
-            document.removeEventListener('click', handleUserGesture);
-            document.removeEventListener('touchstart', handleUserGesture);
-          };
-          document.addEventListener('click', handleUserGesture);
-          document.addEventListener('touchstart', handleUserGesture);
-        }
-      };
-      playVideo();
+      videoRef.current.muted = false; // Unmute the video
+      videoRef.current.play().catch((err) => {
+        console.error('Playback failed:', err);
+      });
+      setIsVideoPlaying(true);
+      setShowYesButton(false); // Hide YES button when the video starts playing
     }
-  }, [videoSource]);
+  };
 
-  useEffect(() => {
+  const handleVideoEnded = () => {
+    setShowYesButton(true); // Show YES button when video ends
+  };
+
+  const handleRestartVideo = () => {
     if (videoRef.current) {
-      videoRef.current.muted = isMuted;
+      videoRef.current.currentTime = 0; // Reset the video to the beginning
+      videoRef.current.play(); // Play the video
+      setShowYesButton(false); // Hide YES button after restarting
     }
-  }, [isMuted]);
-
-  const handleMuteToggle = () => {
-    setIsMuted(prevIsMuted => !prevIsMuted);
   };
 
   return (
     <div className="homepage">
       <video
         ref={videoRef}
-        autoPlay
-        loop
-        muted={isMuted}
+        loop={false} // Do not loop the video so it stops at the end
         className="background-video"
         playsInline
         key={videoSource} // Add key to force re-render when video source changes
+        onEnded={handleVideoEnded} // Event listener for when the video ends
       >
         <source src={videoSource} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      <a className={`btn presave-btn ${showPresave ? 'show' : ''}`} href="https://lnkfi.re/loudandclearremix" target="_blank" rel="noopener noreferrer">
-        'LOUD AND CLEAR' REMIX OUT NOW
+      {!isVideoPlaying && !showYesButton && (
+        <div className="overlay-container">
+          <button className="insert-disk-btn" onClick={handleStartVideo}>
+            INSERT DISK
+          </button>
+        </div>
+      )}
+
+      {showYesButton && (
+        <div className="overlay-container">
+          <button className="insert-disk-btn" onClick={handleRestartVideo}>
+            YES
+          </button>
+        </div>
+      )}
+
+      <a className={`btn presave-btn ${showPresave ? 'show' : ''}`} href="https://tr.ee/aeDkf41ji6" target="_blank" rel="noopener noreferrer">
+        PRE-SAVE 'CAN I GO BACK IN TIME?'
       </a>
 
       <nav className="navbar">
@@ -98,10 +100,6 @@ const HomePage = () => {
           </a>
         </div>
       </nav>
-
-      <button className="mute-btn" onClick={handleMuteToggle}>
-        {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
-      </button>
 
       <footer className="social-icons">
         <a href="https://www.instagram.com/drinkwatergivelove" target="_blank" rel="noopener noreferrer">
