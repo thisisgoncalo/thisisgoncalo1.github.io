@@ -1,7 +1,7 @@
 .homepage {
   position: relative;
-  height: 100vh;
-  overflow: hidden; /* Prevent scrolling */
+  min-height: 100vh;
+  overflow-y: auto; /* Allow vertical scrolling */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,13 +18,21 @@
   object-fit: cover; /* Ensures the video covers the entire screen */
   z-index: -1; /* Places the video behind other content */
   pointer-events: none; /* Prevents user interactions with the video */
+  background-color: black; /* Fallback background color for when video doesn't load */
+}
+
+@media (max-width: 800px) {
+  .background-video {
+    object-fit: cover; /* Reapply to ensure cover behavior on mobile */
+    display: block; /* Ensure the video shows */
+  }
 }
 
 /* Overlay container to hold the "INSERT DISK" button */
 .overlay-container {
   position: absolute;
   top: 55%; /* Move the button slightly lower */
-  left: 49.5%;
+  left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10; /* Ensure the button is above the video */
 }
@@ -151,7 +159,6 @@
   transform: translateX(-50%);
   display: flex;
   gap: 15px;
-  /* Default styles for social icons */
 }
 
 /* Move social icons up for mobile screens */

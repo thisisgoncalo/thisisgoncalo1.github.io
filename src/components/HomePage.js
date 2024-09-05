@@ -12,8 +12,6 @@ const HomePage = () => {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-
     const handleResize = () => {
       const isMobile = window.matchMedia("(max-width: 1280px)").matches;
       const newVideoSource = isMobile
@@ -32,7 +30,6 @@ const HomePage = () => {
     return () => {
       clearTimeout(timer);
       window.removeEventListener('resize', handleResize);
-      document.body.style.overflow = 'auto';
     };
   }, []);
 
@@ -62,16 +59,18 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <video
-        ref={videoRef}
-        loop={false} // Do not loop the video so it stops at the end
-        className="background-video"
-        playsInline
-        key={videoSource} // Add key to force re-render when video source changes
-        onEnded={handleVideoEnded} // Event listener for when the video ends
-      >
-        <source src={videoSource} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+  ref={videoRef}
+  loop={false} 
+  className="background-video"
+  playsInline
+  key={videoSource}
+  onEnded={handleVideoEnded}
+  poster={`${process.env.PUBLIC_URL}/stillhomepage.png`}  /* Add this line */
+>
+  <source src={videoSource} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
 
       {!isVideoPlaying && !showYesButton && (
         <div className="overlay-container">
