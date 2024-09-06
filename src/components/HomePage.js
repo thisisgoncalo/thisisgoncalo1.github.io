@@ -88,8 +88,8 @@ const HomePage = () => {
         </div>
       )}
 
-      <a className={`btn presave-btn ${showPresave ? 'show' : ''}`} href="https://tr.ee/aeDkf41ji6" target="_blank" rel="noopener noreferrer">
-        PRE-SAVE 'CAN I GO BACK IN TIME?'
+      <a className={`btn presave-btn ${showPresave ? 'show' : ''}`} href="https://lnkfi.re/canigobackintime" target="_blank" rel="noopener noreferrer">
+        STREAM 'CAN I GO BACK IN TIME?'
       </a>
 
       <nav className="navbar">
