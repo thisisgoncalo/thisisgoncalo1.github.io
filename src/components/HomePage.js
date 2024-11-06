@@ -1,7 +1,6 @@
 // HomePage.js
 import React, { useState, useEffect, useRef } from 'react';
 import { FaInstagram, FaTiktok, FaFacebookF, FaYoutube, FaSoundcloud, FaSpotify, FaApple } from 'react-icons/fa';
-
 import './HomePage.css';
 
 const HomePage = () => {
@@ -23,6 +22,15 @@ const HomePage = () => {
     handleResize();
     window.addEventListener('resize', handleResize);
 
+    // Set up autoplay when component mounts
+    if (videoRef.current) {
+      videoRef.current.muted = true; // Mute video initially to allow autoplay
+      videoRef.current.play().catch((err) => {
+        console.error('Playback failed:', err);
+      });
+      setIsVideoPlaying(true);
+    }
+
     const timer = setTimeout(() => {
       setShowPresave(true);
     }, 1000);
@@ -32,17 +40,6 @@ const HomePage = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  const handleStartVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = false; // Unmute the video
-      videoRef.current.play().catch((err) => {
-        console.error('Playback failed:', err);
-      });
-      setIsVideoPlaying(true);
-      setShowYesButton(false); // Hide YES button when the video starts playing
-    }
-  };
 
   const handleVideoEnded = () => {
     setShowYesButton(true); // Show YES button when video ends
@@ -59,35 +56,18 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <video
-  ref={videoRef}
-  loop={false} 
-  className="background-video"
-  playsInline
-  key={videoSource}
-  onEnded={handleVideoEnded}
-  poster={`${process.env.PUBLIC_URL}/stillhomepage.png`}  /* Add this line */
->
-  <source src={videoSource} type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-
-
-      {!isVideoPlaying && !showYesButton && (
-        <div className="overlay-container">
-          <button className="insert-disk-btn" onClick={handleStartVideo}>
-            INSERT DISK
-          </button>
-        </div>
-      )}
-
-      {showYesButton && (
-        <div className="overlay-container">
-          <button className="insert-disk-btn" onClick={handleRestartVideo}>
-            YES
-          </button>
-        </div>
-      )}
-
+        ref={videoRef}
+        loop={false} 
+        className="background-video"
+        playsInline
+        key={videoSource}
+        onEnded={handleVideoEnded}
+        autoPlay // Added for autoplay
+        muted // Added to ensure autoplay is not blocked
+      >
+        <source src={videoSource} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <a className={`btn presave-btn ${showPresave ? 'show' : ''}`} href="https://lnkfi.re/canigobackintime" target="_blank" rel="noopener noreferrer">
         STREAM 'CAN I GO BACK IN TIME?'
       </a>
