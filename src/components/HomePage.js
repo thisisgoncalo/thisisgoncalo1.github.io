@@ -6,7 +6,6 @@ import './HomePage.css';
 const HomePage = () => {
   const [showPresave, setShowPresave] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [showYesButton, setShowYesButton] = useState(false); // State for showing the YES button
   const [videoSource, setVideoSource] = useState('');
   const videoRef = useRef(null);
 
@@ -42,14 +41,9 @@ const HomePage = () => {
   }, []);
 
   const handleVideoEnded = () => {
-    setShowYesButton(true); // Show YES button when video ends
-  };
-
-  const handleRestartVideo = () => {
     if (videoRef.current) {
       videoRef.current.currentTime = 0; // Reset the video to the beginning
-      videoRef.current.play(); // Play the video
-      setShowYesButton(false); // Hide YES button after restarting
+      videoRef.current.play(); // Play the video again
     }
   };
 
@@ -61,7 +55,7 @@ const HomePage = () => {
         className="background-video"
         playsInline
         key={videoSource}
-        onEnded={handleVideoEnded}
+        onEnded={handleVideoEnded} // Call handleVideoEnded when video ends
         autoPlay // Added for autoplay
         muted // Added to ensure autoplay is not blocked
       >
