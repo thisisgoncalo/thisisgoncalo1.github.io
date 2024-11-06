@@ -62,7 +62,24 @@ const HomePage = () => {
         <source src={videoSource} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <a className={`btn presave-btn ${showPresave ? 'show' : ''}`} href="https://lnkfi.re/canigobackintime" target="_blank" rel="noopener noreferrer">
+
+      {/* New button to watch the official video */}
+      <a
+        className={`btn watch-video-btn ${showPresave ? 'show' : ''}`}
+        href="https://www.youtube.com/watch?v=O3P251wiYcU" // Replace with your video link
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WATCH 'CAN I GO BACK IN TIME' OFFICIAL VIDEO
+      </a>
+
+      {/* Existing button to stream the song */}
+      <a
+        className={`btn presave-btn ${showPresave ? 'show' : ''}`}
+        href="https://lnkfi.re/canigobackintime"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         STREAM 'CAN I GO BACK IN TIME?'
       </a>
 
